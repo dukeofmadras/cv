@@ -1,4 +1,3 @@
-
 #defining constant values
 import sys
 FIVE = "SLIM BAR"
@@ -13,7 +12,7 @@ class vendingMachine():
         self.state = state
 
     def operation(self, state, money):
-        if state == "SLIM BAR":
+        if state in ["SLIM BAR" , "slim bar", "slimbar", "SLIMBAR" ]:
             print("Slim Bar Selected")
             if money >= 5:
                 print("Here's your Slim bar")
@@ -61,17 +60,14 @@ class vendingMachine():
 print('Welcome to the vending machine!')
 print("Welcome!, Please select any product you want. Slim bar, Far bar, Mur bar and Twin bar")
 print("Slim bar - 5p, Far bar - 10p, Mur bar- 20p and Twin bar - 50p")
-statex = input("Enter product you needed")
+statex = str(input("Enter product you needed"))
 moneyx = int(input("Enter amount"))
-checking = vendingMachine()
-checking.operation(statex,moneyx)
+checking = vendingMachine(statex, moneyx)
+change = checking.operation(statex,moneyx)
 remaning = change
-z = print("Want to buy more items with remaining change ? (y/n)" )
-if z == "y":
+z = input("Want to buy more items with remaining change ? (y/n)" )
+if z in ["y", "yes", "Y", "YES"]:
     a = input("Enter product name")
-    checking1 = vendingMachine.operation(a,remaning)
+    checking1 = checking.operation(a,remaning)
 else:
     print("Thank you")
-
-
-
